@@ -52,6 +52,7 @@ def drawCirclePattern():
     angChange = 360 / count
     heading = 0
     while x < count:
+        setRandomColor()
         turtle.goto(startx, starty)
         heading = heading + angChange
         turtle.setheading(heading)
@@ -59,9 +60,47 @@ def drawCirclePattern():
         turtle.forward(offset)
         turtle.pendown()
         turtle.circle(rad)
+        turtle.penup()
         x += 1
 
+def drawSuperPattern():
+    import random
+
+    count = random.randint(10,50)
     
+    x = 0
+    y = 0
+    angChange = 360 / count
+    heading = 0
+    choice = 0
+    while y < count:
+        choice = random.randint(1,2)
+        if choice == 1:
+            startx = 0
+            starty = 0
+            offset = random.randint(100,500)
+            rad = random.randint(100, 500)
+            setRandomColor()
+            turtle.goto(startx, starty)
+            heading = heading + angChange
+            turtle.setheading(heading)
+            turtle.penup()
+            turtle.forward(offset)
+            turtle.pendown()
+            turtle.circle(rad)
+            turtle.penup()
+            y += 1
+        elif choice == 2:
+            height = random.randint(100, 600)
+            width =- random.randint(100, 600)
+            turtle.goto(startx, starty)
+            heading = heading + angChange
+            drawRectangle(startx,starty,height,width,heading,offset)
+            setRandomColor()
+            y += 1
+            
+
+            
 
 
 def done():
@@ -77,5 +116,3 @@ def setRandomColor():
         turtle.color("orange")
     elif x == 4: 
         turtle.color("green")
-
-
